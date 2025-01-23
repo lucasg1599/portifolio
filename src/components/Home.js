@@ -1,141 +1,185 @@
-import React from "react";
-import { 
-  FaReactIcon, FaJsIcon, FaHtmlIcon, FaCssIcon, FaNodeJsIcon, 
-  FaPythonIcon, FaJavaIcon, SiSpringbootIcon, SiGitIcon 
-} from "./styled/styledIcons";
+import React, { useState } from "react";
+import styled from "styled-components";
+import SkillsPanel from "./styled/skillPaine";
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const Home = () => {
+  const [showSkills, setShowSkills] = useState(false);
+
   return (
-    <div id="home" style={styles.homeContainer}>
-      <div style={styles.centeredContent}>
-        <div style={styles.profileSection}>
-          <img
-            src="fotoperfil.jpg" 
-            alt="Profile"
-            style={styles.profileImage}
-          />
-          <h1 style={styles.welcomeText}>Bem-vindo ao meu Portfólio</h1>
-        </div>
-      </div>
-      <div style={styles.aboutSection}>
-        <h2>Sobre Mim</h2>
-        <p style={styles.aboutText}>
-          Sou um desenvolvedor apaixonado por criar aplicações web dinâmicas e interativas. 
-          Gosto de aprender novas tecnologias e resolver problemas desafiadores.
-        </p>
-      </div>
-      <div style={styles.skillsSection}>
-        <h2>Tecnologias que uso</h2>
-        <div style={styles.skillsList}>
-          <div style={styles.skill}>
-            <FaJsIcon />
-            <span style={styles.skillText}>JavaScript</span>
-          </div>
-          <div style={styles.skill}>
-            <FaReactIcon />
-            <span style={styles.skillText}>React</span>
-          </div>
-          <div style={styles.skill}>
-            <FaNodeJsIcon />
-            <span style={styles.skillText}>Node.js</span>
-          </div>
-          <div style={styles.skill}>
-            <FaCssIcon />
-            <span style={styles.skillText}>CSS</span>
-          </div>
-          <div style={styles.skill}>
-            <FaHtmlIcon />
-            <span style={styles.skillText}>HTML</span>
-          </div>
-          <div style={styles.skill}>
-            <FaPythonIcon />
-            <span style={styles.skillText}>Python</span>
-          </div>
-          <div style={styles.skill}>
-            <FaJavaIcon />
-            <span style={styles.skillText}>Java</span>
-          </div>
-          <div style={styles.skill}>
-            <SiSpringbootIcon />
-            <span style={styles.skillText}>Spring Boot</span>
-          </div>
-          <div style={styles.skill}>
-            <SiGitIcon />
-            <span style={styles.skillText}>Git</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container id="home">
+      <Title>Bem-vindo ao Meu Portfólio</Title>
+      <ProfileContainer>
+        <ProfileImage src="fotoperfil.jpg" alt="Minha Foto" />
+        <ProfileDescription>
+          <h2>Olá, eu sou Lucas Guilherme</h2>
+          <p>
+            Sou desenvolvedor(a) apaixonado(a) por tecnologia, com experiência em
+            diversas ferramentas e linguagens. Estou sempre em busca de novos desafios
+            e aprimoramento contínuo. Aqui, você pode conferir alguns dos meus projetos
+            e habilidades.
+          </p>
+        </ProfileDescription>
+      </ProfileContainer>
+      
+      <Button onClick={() => setShowSkills(true)}>Minhas Hard Skills</Button>
+
+      {showSkills && <SkillsPanel onClose={() => setShowSkills(false)} />}
+      
+      <ContactContainer>
+        <ContactLinks>
+          <ContactLink href="https://www.linkedin.com/in/lucas-guilherme-piassa-ferreira-916250149/" target="_blank">
+            <FaLinkedin style={{ marginRight: "8px" }} /> LinkedIn
+          </ContactLink>
+          <ContactLink href="https://github.com/lucasg1599" target="_blank">
+            <FaGithub style={{ marginRight: "8px" }} /> GitHub
+          </ContactLink>
+          <ContactLink href="https://wa.me/5524981384333" target="_blank">
+            <FaWhatsapp style={{ marginRight: "8px" }} /> WhatsApp
+          </ContactLink>
+        </ContactLinks>
+        <ContactLink href="mailto:lucasg1599@gmail.com">lucasg1599@gmail.com</ContactLink>
+      </ContactContainer>
+    </Container>
   );
 };
 
-const styles = {
-  homeContainer: {
-    height: "100vh", // Garante que a altura da tela é 100% da janela
-    width: "100%",  // Ocupa toda a largura
-    overflow: "hidden", // Impede rolagem
-    background: "linear-gradient(120deg,rgb(6, 1, 10),rgb(9, 4, 17))",
-    color: "#fff",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    fontFamily: "'Roboto', sans-serif",
-    padding: "0",  // Retira o padding para garantir que não há espaço adicional
-  },
-  centeredContent: {
-    textAlign: "center",
-    
-  },
-  profileSection: {
-    marginTop: "50px", // Ajustado para reduzir o espaço
-    textAlign: "center",
-  },
-  profileImage: {
-    borderRadius: "50%",
-    width: "150px",
-    height: "150px",
-    objectFit: "cover",
-    marginBottom: "20px",
-  },
-  welcomeText: {
-    fontSize: "36px",
-    fontWeight: "bold",
-    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-  },
-  aboutSection: {
-    backgroundColor: "rgb(18, 4, 31)",
-    padding: "30px",
-    borderRadius: "10px",
-    maxWidth: "700px",
-    margin: "auto",
-    marginBottom: "20px", 
-  },
-  aboutText: {
-    fontSize: "18px",
-    lineHeight: "1.6",
-  },
-  skillsSection: {
-    backgroundColor: "rgb(18, 4, 31)",
-    padding: "30px",
-    borderRadius: "10px",
-    maxWidth: "800px",
-    margin: "auto",
-    textAlign: "center",
-  },
-  skillsList: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "30px",
-    marginTop: "10px",
-  },
+const Container = styled.section`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #292929;
+  color: white;
+
+  @media (max-width: 768px) {
+    padding: 40px 10px;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+`;
+
+const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+`;
+
+const ProfileImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+const ProfileDescription = styled.div`
+  max-width: 500px;
+
+  h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
   
-  skillText: {
-    marginTop: "10px",
-    fontSize: "16px",
-    fontWeight: "bold",
-  },
-};
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+`;
+
+const Button = styled.button`
+  background-color: #f39c12;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #e67e22;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 15px;
+  }
+`;
+
+const ContactContainer = styled.div`
+  margin-top: 10px;
+  align-items: center;
+  text-align: center;
+`;
+
+const ContactLinks = styled.div`
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+`;
+
+const ContactLink = styled.a`
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    border-bottom: 2px solid #fff;
+  }
+
+  & > svg {
+    margin-right: 8px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
 
 export default Home;
