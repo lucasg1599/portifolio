@@ -76,7 +76,7 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Alinha ao centro */
   margin-bottom: 40px;
   gap: 20px;
 
@@ -101,6 +101,7 @@ const ProfileImage = styled.img`
 
 const ProfileDescription = styled.div`
   max-width: 500px;
+  text-align: center; /* Centraliza o texto dentro da descrição */
 
   h2 {
     font-size: 28px;
