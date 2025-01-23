@@ -11,7 +11,7 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <h1>Welcome to My Portfolio</h1>
+        <h1>Welcoo</h1>
       </div>
     </div>
   );

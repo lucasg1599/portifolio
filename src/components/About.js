@@ -15,7 +15,7 @@ const About = () => {
       <h2>About Me</h2>
       <p>
         I am a passionate developer with experience in building interactive and dynamic web
-        applications. Check out my work and get in touch!
+        applications. Check  my work and get in touch!
       </p>
 
       <motion.button

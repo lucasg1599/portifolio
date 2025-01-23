@@ -41,7 +41,7 @@ const Projects = () => {
         </div>
         <div>
           <img src="https://via.placeholder.com/300" alt="Project 3" style={{ width: "100%" }} />
-          <h3 style={{ textAlign: "center" }}>Project 3</h3>
+          <h3 style={{ textAlign: "center" }}> 3</h3>
         </div>
       </Slider>
     </div>
