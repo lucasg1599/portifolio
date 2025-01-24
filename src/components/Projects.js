@@ -53,7 +53,12 @@ const Projects = () => {
                 <ImageContainer>
                   <img src={project.image} alt={project.title} />
                 </ImageContainer>
-                <ContainerSkills>
+                
+                <DescriptionCard isVisible={hovered === index}>
+                  <DescriptionText>{project.description}</DescriptionText>
+                </DescriptionCard>
+              </ContentWrapper>
+              <ContainerSkills>
                 <ProjectTechnologies>
                     {project.technologies.map((tech, index) => (
                       <TechIcon key={index}>
@@ -63,10 +68,6 @@ const Projects = () => {
                     ))}
                   </ProjectTechnologies>
                 </ContainerSkills>
-                <DescriptionCard isVisible={hovered === index}>
-                  <DescriptionText>{project.description}</DescriptionText>
-                </DescriptionCard>
-              </ContentWrapper>
               <ProjectTitle hovered={hovered === index}>
                 {project.title}
               </ProjectTitle>
@@ -83,9 +84,9 @@ const Projects = () => {
 const DescriptionCard = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  left: 4;
   width: 100%;
-  height: 215px;
+  height: 90%; 
   background-color: rgba(51, 51, 51, 0.9); /* Transparência para dar destaque */
   color: #fff;
   padding: 15px;
@@ -101,7 +102,8 @@ const DescriptionCard = styled.div`
   pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
 
   @media (max-width: 768px) {
-    height: auto;
+    height: 175px;
+    width: 75%; 
     padding: 10px;
   }
 `;
@@ -150,7 +152,7 @@ const TechIcon = styled.div`
 const Container = styled.section`
   padding: 60px 20px;
   text-align: center;
-  background-color: #1f1f1f;
+  background-color: #292929;
 
   @media (max-width: 768px) {
     padding: 40px 10px;
@@ -214,6 +216,7 @@ const ImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: ${({ isVisible }) => (isVisible ? 0.6 : 1)}; /* Reduz a visibilidade da imagem */
   }
 
   &:hover img {
@@ -222,19 +225,30 @@ const ImageContainer = styled.div`
 
   @media (max-width: 768px) {
     height: 100px;
-    width:80%; 
-    
+    width: 80%;
+
     img {
-      object-fit: contain; 
+      object-fit: contain;
     }
   }
 `;
 
 
 const DescriptionText = styled.p`
-  font-size: 14px;
-  align-items: center;
-  line-height: 1.5;
+  font-size: 16px; 
+  line-height: 1.4;
+  text-align: center;
+   
+  
+  @media (max-width: 768px) {
+    font-size: 13px; 
+  line-height: 1.4;
+  text-align: center;
+
+    img {
+      object-fit: contain;
+    }
+  }
 `;
 
 const ProjectTitle = styled.h3`

@@ -14,10 +14,9 @@ const Home = () => {
         <ProfileDescription>
           <h2>Olá, eu sou Lucas Guilherme</h2>
           <p>
-            Sou desenvolvedor(a) apaixonado(a) por tecnologia, com experiência
-            em diversas ferramentas e linguagens. Estou sempre em busca de novos
-            desafios e aprimoramento contínuo. Aqui, você pode conferir alguns
-            dos meus projetos e habilidades.
+            Com 25 anos e cursando Análise e Desenvolvimento de Sistemas, sou apaixonado por tecnologia e inovação. Sempre em busca de aprendizado contínuo, encaro cada desafio como uma oportunidade de crescimento.
+
+            Confira aqui alguns dos meus projetos e habilidades desenvolvidas ao longo da minha trajetória profissional.
           </p>
         </ProfileDescription>
       </ProfileContainer>
