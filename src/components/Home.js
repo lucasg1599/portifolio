@@ -114,18 +114,18 @@ const ProfileImage = styled.img`
 
 const ProfileDescription = styled.div`
   max-width: 500px;
-  text-align: center; /* Centraliza o texto dentro da descrição */
+  text-align: center; 
 
   h2 {
     font-size: 28px;
     margin-bottom: 10px;
-    cursor: default; /* Evita que o cursor pareça editável */
+    cursor: default;
   }
 
   p {
     font-size: 18px;
     line-height: 1.6;
-    cursor: default; /* Evita que o cursor pareça editável */
+    cursor: default; 
   }
 
   @media (max-width: 768px) {
