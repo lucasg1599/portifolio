@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import {
+  FaReactIcon,
+  FaJsIcon,
+  FaHtmlIcon,
+  FaCssIcon,
+} from "./styled/styledIcons";
 
 const Projects = () => {
   const [hovered, setHovered] = useState(null);
@@ -8,9 +14,16 @@ const Projects = () => {
   const projects = [
     {
       image: "loginEregistro.png",
-      title: "Projeto 1",
-      description: "Descrição do projeto 1",
+      title: "Login e Registro com Firebase",
+      description:
+        "Sistema de Login e Registro de Usuários desenvolvido com React.js e Firebase Authentication. Este projeto permite a autenticação segura de usuários com validação de CPF e e-mail. Inclui tratamento de erros personalizados, como a verificação de e-mail já cadastrado, além de ser responsivo para diferentes dispositivos.",
       link: "https://example.com/projeto1",
+      technologies: [
+        { icon: <FaReactIcon />, name: "React" },
+        { icon: <FaJsIcon />, name: "JavaScript" },
+        { icon: <FaHtmlIcon />, name: "HTML" },
+        { icon: <FaCssIcon />, name: "CSS" },
+      ],
     },
   ];
 
@@ -40,7 +53,16 @@ const Projects = () => {
                 <ImageContainer>
                   <img src={project.image} alt={project.title} />
                 </ImageContainer>
-                {/* Exibe o card de descrição com controle de visibilidade */}
+                <ContainerSkills>
+                <ProjectTechnologies>
+                    {project.technologies.map((tech, index) => (
+                      <TechIcon key={index}>
+                        {tech.icon}
+                        <TechName>{tech.name}</TechName>
+                      </TechIcon>
+                    ))}
+                  </ProjectTechnologies>
+                </ContainerSkills>
                 <DescriptionCard isVisible={hovered === index}>
                   <DescriptionText>{project.description}</DescriptionText>
                 </DescriptionCard>
@@ -58,32 +80,72 @@ const Projects = () => {
     </Container>
   );
 };
-
-// Todos os componentes styled vão aqui, incluindo DescriptionCard, agora com o delay
-
 const DescriptionCard = styled.div`
-  flex: 0.5; /* Ocupa metade do espaço */
-  height: 200px;
-  background-color: #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 215px;
+  background-color: rgba(51, 51, 51, 0.9); /* Transparência para dar destaque */
   color: #fff;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transform: scale(${({ isVisible }) => (isVisible ? "1" : "0.9")});
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "20px")});
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transition: transform 1s ease, opacity 1s ease;
-  pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")}; /* Previne interações durante a transição */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
 
   @media (max-width: 768px) {
-    flex: 1;
     height: auto;
-    margin-left: 5px;
+    padding: 10px;
   }
 `;
+
+const TechName = styled.p`
+  margin-top: 5px;
+  font-size: 14px;  
+  color: #fff;
+  text-align: center;  
+`;
+const ProjectTechnologies = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+`;
+
+const ContainerSkills = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TechIcon = styled.div`
+  width: 60px;  
+  height: 60px;  
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+`;
+
 
 const Container = styled.section`
   padding: 60px 20px;
@@ -131,19 +193,21 @@ const ProjectCardWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
   width: 100%;
 `;
 
 const ImageContainer = styled.div`
-  flex: 0.5; /* Ocupa metade do espaço */
+  flex: 0.5;
+  width: 100%;
   height: 200px;
   border: 2px;
-  border-radius: 5px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 10px;
 
   img {
     width: 100%;
@@ -153,12 +217,23 @@ const ImageContainer = styled.div`
   }
 
   &:hover img {
-    transform: scale(0.95); /* A imagem diminui quando o mouse passa */
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    height: 100px;
+    width:80%; 
+    
+    img {
+      object-fit: contain; 
+    }
   }
 `;
 
+
 const DescriptionText = styled.p`
   font-size: 14px;
+  align-items: center;
   line-height: 1.5;
 `;
 

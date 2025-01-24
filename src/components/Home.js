@@ -14,32 +14,44 @@ const Home = () => {
         <ProfileDescription>
           <h2>Olá, eu sou Lucas Guilherme</h2>
           <p>
-            Sou desenvolvedor(a) apaixonado(a) por tecnologia, com experiência em
-            diversas ferramentas e linguagens. Estou sempre em busca de novos desafios
-            e aprimoramento contínuo. Aqui, você pode conferir alguns dos meus projetos
-            e habilidades.
+            Sou desenvolvedor(a) apaixonado(a) por tecnologia, com experiência
+            em diversas ferramentas e linguagens. Estou sempre em busca de novos
+            desafios e aprimoramento contínuo. Aqui, você pode conferir alguns
+            dos meus projetos e habilidades.
           </p>
         </ProfileDescription>
       </ProfileContainer>
-      
+
       <Button onClick={() => setShowSkills(true)}>Minhas Hard Skills</Button>
 
       {showSkills && <SkillsPanel onClose={() => setShowSkills(false)} />}
-      
-      <ContactContainer>
-        <ContactLinks>
-          <ContactLink href="https://www.linkedin.com/in/lucas-guilherme-piassa-ferreira-916250149/" target="_blank">
-            <FaLinkedin style={{ marginRight: "8px" }} /> LinkedIn
+      <FlexContainer>
+        <ResumeContent>
+          <DownloadButton href="/Curriculo Lucas.pdf" download>
+            Baixar CV
+          </DownloadButton>
+        </ResumeContent>
+
+        <ContactContainer>
+          <ContactLinks>
+            <ContactLink
+              href="https://www.linkedin.com/in/lucas-guilherme-piassa-ferreira-916250149/"
+              target="_blank"
+            >
+              <FaLinkedin style={{ marginRight: "8px" }} /> LinkedIn
+            </ContactLink>
+            <ContactLink href="https://github.com/lucasg1599" target="_blank">
+              <FaGithub style={{ marginRight: "8px" }} /> GitHub
+            </ContactLink>
+            <ContactLink href="https://wa.me/5524981384333" target="_blank">
+              <FaWhatsapp style={{ marginRight: "8px" }} /> WhatsApp
+            </ContactLink>
+          </ContactLinks>
+          <ContactLink href="mailto:lucasg1599@gmail.com">
+            lucasg1599@gmail.com
           </ContactLink>
-          <ContactLink href="https://github.com/lucasg1599" target="_blank">
-            <FaGithub style={{ marginRight: "8px" }} /> GitHub
-          </ContactLink>
-          <ContactLink href="https://wa.me/5524981384333" target="_blank">
-            <FaWhatsapp style={{ marginRight: "8px" }} /> WhatsApp
-          </ContactLink>
-        </ContactLinks>
-        <ContactLink href="mailto:lucasg1599@gmail.com">lucasg1599@gmail.com</ContactLink>
-      </ContactContainer>
+        </ContactContainer>
+      </FlexContainer>
     </Container>
   );
 };
@@ -64,8 +76,9 @@ const Title = styled.h1`
   font-size: 36px;
   margin-bottom: 20px;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: bold;
+  cursor: default; /* Evita que o cursor pareça editável */
 
   @media (max-width: 768px) {
     font-size: 28px;
@@ -106,11 +119,13 @@ const ProfileDescription = styled.div`
   h2 {
     font-size: 28px;
     margin-bottom: 10px;
+    cursor: default; /* Evita que o cursor pareça editável */
   }
-  
+
   p {
     font-size: 18px;
     line-height: 1.6;
+    cursor: default; /* Evita que o cursor pareça editável */
   }
 
   @media (max-width: 768px) {
@@ -123,6 +138,7 @@ const ProfileDescription = styled.div`
     }
   }
 `;
+
 
 const Button = styled.button`
   background-color: #f39c12;
@@ -144,11 +160,45 @@ const Button = styled.button`
 `;
 
 const ContactContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 0; 
   align-items: center;
   text-align: center;
 `;
 
+const DownloadButton = styled.a`
+  background-color: #f39c12;
+  color: #fff;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #e67e22;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+`;
+
+
+const ResumeContent = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const FlexContainer = styled.div`
+  display: flex;
+  margin-top:-20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+`;
 const ContactLinks = styled.div`
   margin-top: 20px;
   display: flex;
@@ -169,6 +219,7 @@ const ContactLink = styled.a`
   transition: all 0.3s;
   display: flex;
   align-items: center;
+  cursor: pointer; /* Mantém o cursor como ponteiro para links */
 
   &:hover {
     border-bottom: 2px solid #fff;
