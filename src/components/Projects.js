@@ -17,7 +17,7 @@ const Projects = () => {
       title: "Login e Registro com Firebase",
       description:
         "Sistema de Login e Registro de Usuários desenvolvido com React.js e Firebase Authentication. Este projeto permite a autenticação segura de usuários com validação de CPF e e-mail. Inclui tratamento de erros personalizados, como a verificação de e-mail já cadastrado, além de ser responsivo para diferentes dispositivos.",
-      link: "https://example.com/projeto1",
+      link: "https://loginlucas.netlify.app/",
       technologies: [
         { icon: <FaReactIcon />, name: "React" },
         { icon: <FaJsIcon />, name: "JavaScript" },
